@@ -1,0 +1,7 @@
+# db-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  POSTGRES_DB: mydatabase
