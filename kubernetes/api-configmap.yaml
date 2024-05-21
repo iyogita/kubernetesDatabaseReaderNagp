@@ -5,5 +5,5 @@ metadata:
   name: api-config
 data:
   DB_HOST: db
-  DB_PORT: "5432"
+  DB_PORT: "3306"
   DB_NAME: mydatabase

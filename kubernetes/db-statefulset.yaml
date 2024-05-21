@@ -16,18 +16,34 @@ spec:
     spec:
       containers:
       - name: my-database
-        image: mysql:latest  # Use your preferred database image
+        image: mysql:8.0  # Official MySQL image
         ports:
-        - containerPort: 5432
+        - containerPort: 3306
           name: db
-        envFrom:
-        - configMapRef:
-            name: db-config
-        - secretRef:
-            name: db-secret
+        env:
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: DB_NAME
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASS
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASS
         volumeMounts:
         - name: db-storage
-          mountPath: /var/lib/msql/data
+          mountPath: /var/lib/mysql
   volumeClaimTemplates:
   - metadata:
       name: db-storage
@@ -36,3 +52,4 @@ spec:
       resources:
         requests:
           storage: 1Gi
+      storageClassName: manual
