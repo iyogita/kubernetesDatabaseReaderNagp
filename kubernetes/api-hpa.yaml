@@ -1,4 +1,4 @@
-# hpa.yaml
+# api-hpa.yaml
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -6,8 +6,8 @@ metadata:
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
-    kind: Deployment
-    name: api-deployment
+    kind: ReplicaSet
+    name: my-api
   minReplicas: 3
   maxReplicas: 10
   metrics:
