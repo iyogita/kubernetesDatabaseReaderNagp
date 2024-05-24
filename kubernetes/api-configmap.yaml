@@ -1,9 +1,0 @@
-# api-configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: api-config
-data:
-  DB_HOST: db
-  DB_PORT: "3306"
-  DB_NAME: mydatabase
