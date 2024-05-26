@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: api-container
-          image: iyogita/demo-app:latest
+          image: iyogita/demo-app:1.0
           env:
             - name: DB_CONNECTION_STRING
               valueFrom:
