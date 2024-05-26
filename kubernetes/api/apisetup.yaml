@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: api-container
-          image: iyogita/demo-app:1.0
+          image: iyogita/demo-app:3.0
           env:
             - name: DB_CONNECTION_STRING
               valueFrom:
@@ -54,5 +54,27 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "500Mi"  # Corrected capitalization
 
 ---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  connectionString: "jdbc:mysql://mysql-0.mysql:3306/mysql"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-sec
+type: Opaque
+data:
+  username: cm9vdA==  # base64 encoded value
+  password: eW91cnBhc3N3b3Jk  # base64 encoded value
