@@ -57,7 +57,7 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              memory: "500Mi"  # Corrected capitalization
+              memory: "500Mi"
 
 ---
 
